@@ -1,28 +1,39 @@
 /* Section 1 */
 .main-home {
-  height: 100vh;
+  height: calc(100vh - 70px);
   width: 100%;
-  background: radial-gradient(
-    circle,
-    rgba(225, 116, 251, 1) 0%,
-    rgba(17, 124, 220, 1) 75%
+  background: linear-gradient(
+    90deg,
+    rgba(34, 40, 49, 1) 0%,
+    rgba(41, 161, 156, 1) 76%
   );
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
+  z-index: -10;
+  overflow: hidden;
 }
 
-.main-home .main-home-img {
-  margin-top: -70px;
-  width: 350px;
-  border-radius: 2%;
+.main-home-img-backround {
+  background-image: url(../../../../media/localbri-only-bri.png);
+  background-size: cover;
+  background-position: center;
+  height: 150%;
+  width: 150%;
+  position: absolute;
+  top: -10vh;
+  left: 20vw;
+  filter: blur(8px);
+  z-index: -5;
+  margin-bottom: 10px;
 }
 
 .main-home-info {
   margin-top: -70px;
   margin-left: 10px;
-  width: 30%;
+  width: 50%;
 }
 
 .main-home-title,
