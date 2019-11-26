@@ -10,7 +10,6 @@ const NavbarHomeComponent = () => {
   const content = (
     <div className='navbarHome-sub2'>
       <Link to='/about'>
-<<<<<<< HEAD
         <label className='navbarHome-sub2-btn-login'>Nosotros</label>
       </Link>
 
@@ -19,12 +18,6 @@ const NavbarHomeComponent = () => {
       </Link>
 
       <Link to='/login'>
-=======
-        <label className='navbarHome-sub2-btn-login'>Sobre Nosotros</label>
-      </Link>
-
-      <Link to='/login'>
->>>>>>> 29b1070b538f51146c82003fe23e9c8f37711c3b
         <label className='navbarHome-sub2-btn-login'>Iniciar Sesión</label>
       </Link>
 
@@ -51,15 +44,11 @@ const NavbarHomeComponent = () => {
   const contentSizeComputer = (
     <div className='navbarHome-sub2'>
       <Link to='/about'>
-<<<<<<< HEAD
         <label className='navbarHome-sub2-btn-login'>Nosotros</label>
       </Link>
 
       <Link to='/login'>
         <label className='navbarHome-sub2-btn-login'>Servicios</label>
-=======
-        <label className='navbarHome-sub2-btn-login'>Sobre Nosotros</label>
->>>>>>> 29b1070b538f51146c82003fe23e9c8f37711c3b
       </Link>
 
       <Link to='/login'>
