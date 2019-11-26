@@ -1,9 +1,13 @@
+.title-store {
+  color: white;
+}
 .navbarHome-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: #ff9d3e;
+  background-color: #222831;
   height: 70px;
+  padding: 0 5% 0 5%;
 }
 
 .navbarHome-sub1 img {
@@ -17,6 +21,12 @@
   align-items: center;
 }
 
+.ant-popover-placement-bottomRight > .ant-popover-content > .ant-popover-arrow {
+  border-color: #393e46;
+}
+.ant-popover-inner-content {
+  background-color: #393e46;
+}
 .navbarHome-sub2 a {
   margin: 0 10px;
 }
@@ -28,13 +38,14 @@
 /* Colores del Button Login */
 .navbarHome-sub2-btn-login {
   color: white;
-  background-color: #4caf50;
-  border-color: #4caf50;
+  font-weight: normal;
+  font-size: 18px;
+  font-family: Arial;
 }
 
 .navbarHome-sub2-btn-login:hover {
-  background-color: #388e3c;
-  border-color: #388e3c;
+  color: #29a19c;
+  cursor: pointer;
 }
 
 /* Media Queries: */
@@ -57,7 +68,8 @@
   .navbarHome-sub2 {
     flex-direction: column;
     height: 130px;
-    text-align: center;
+    text-align: left;
+    color: #29a19c;
   }
   .navbarHome-sub2 i {
     font-size: 25px;
