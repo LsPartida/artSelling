@@ -12,7 +12,7 @@
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-  z-index: -10;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -52,9 +52,13 @@
   border-color: white;
 }
 
+.main-homebtns {
+  z-index: 10;
+}
+
 .main-home-btns .main-home-btn2:hover {
-  background-color: #ff850f;
-  border-color: #ff850f;
+  background-color: #222831;
+  border-color: #222831;
 }
 
 /* Media Queries: */
