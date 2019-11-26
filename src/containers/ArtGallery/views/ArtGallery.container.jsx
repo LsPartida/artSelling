@@ -7,7 +7,7 @@ import './artGallery.container.css';
 
 const ArtContainerContainer = () => {
   return (
-    <div className='artgallery-container'>
+    <div className='art-gallery-container'>
       <ArtGallery />
     </div>
   );

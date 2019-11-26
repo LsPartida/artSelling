@@ -5,12 +5,13 @@ import ArtGalleryMenuComponent from './components/ArtGalleryMenu.component';
 // * Styles
 import './artGallery.component.css';
 
-const ArtPreViewComponent = () => {
+const ArtGalleryComponent = () => {
   return (
-    <div className='artpreview-container'>
+    <div className='art-gallery-container'>
       <ArtGalleryMenuComponent />
+      <h1>AQUI DEBE IR LA GALERIA DE CARDS</h1>
     </div>
   );
 };
 
-export default ArtPreViewComponent;
+export default ArtGalleryComponent;
