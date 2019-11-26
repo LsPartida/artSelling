@@ -10,7 +10,11 @@ const NavbarHomeComponent = () => {
   const content = (
     <div className='navbarHome-sub2'>
       <Link to='/about'>
-        <label className='navbarHome-sub2-btn-login'>Sobre Nosotros</label>
+        <label className='navbarHome-sub2-btn-login'>Nosotros</label>
+      </Link>
+
+      <Link to='/login'>
+        <label className='navbarHome-sub2-btn-login'>Servicios</label>
       </Link>
 
       <Link to='/login'>
@@ -40,7 +44,11 @@ const NavbarHomeComponent = () => {
   const contentSizeComputer = (
     <div className='navbarHome-sub2'>
       <Link to='/about'>
-        <label className='navbarHome-sub2-btn-login'>Sobre Nosotros</label>
+        <label className='navbarHome-sub2-btn-login'>Nosotros</label>
+      </Link>
+
+      <Link to='/login'>
+        <label className='navbarHome-sub2-btn-login'>Servicios</label>
       </Link>
 
       <Link to='/login'>
