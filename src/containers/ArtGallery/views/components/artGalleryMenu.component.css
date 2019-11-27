@@ -2,7 +2,7 @@
   background-color: #222831;
   width: 700px;
   padding: 10px;
-  margin: 5px;
+  margin: 2vh 0;
   border-radius: 8px;
   display: flex;
   justify-content: space-around;
@@ -34,7 +34,7 @@
 
 /* Media Queries: */
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 700px) {
   .gallery-menu-btn p {
     display: none;
   }
