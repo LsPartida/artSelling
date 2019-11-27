@@ -1,0 +1,10 @@
+.slideshow {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-item {
+  height: 100%;
+  width: 100%;
+}
