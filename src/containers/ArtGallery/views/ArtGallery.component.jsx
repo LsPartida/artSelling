@@ -1,25 +1,30 @@
 import React from 'react';
-
 // * Components
 import ArtGalleryMenuComponent from './components/ArtGalleryMenu.component';
 import Card from '../../../shared/components/ImageCard/ImageCard.component';
 // * Utils
 import { images } from '../../../utils/images';
+import NavbarHome from '../../../shared/components/NavbarHome/NavbarHome.component';
 // * Styles
 import './artGallery.component.css';
 
-const ArtPreViewComponent = () => {
+const ArtGalleryComponent = () => {
   return (
-    <div className='artpreview-container'>
+    <div className='art-gallery-container'>
+      <NavbarHome />
       <ArtGalleryMenuComponent />
       <Card
-        images={images}
-        title='Niño prieto'
-        description='Casi no lo use, descuento al primero que pase por el'
+        // images={images}
+        title='Collar'
+        description='Esta nuevo el pto'
+        price='10.00'
+        phone=''
+        location=''
+        userRouter=''
         footer={true}
       />
     </div>
   );
 };
 
-export default ArtPreViewComponent;
+export default ArtGalleryComponent;

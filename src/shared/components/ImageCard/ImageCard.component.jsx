@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // * Components
 import Slideshow from '../Slideshow/Slideshow.component';
 // * Styles
 import './imageCard.component.css';
+import { Button } from 'antd';
+// * Utils
+import briGlitch from '../../../media/localbri-glitch.png';
 
-const ImageCardComponent = ({ footer, images, title, description }) => {
+const ImageCardComponent = ({ footer, images, title, description, price }) => {
   return (
     <div className='card'>
       <div className='card-header'>
@@ -12,11 +16,20 @@ const ImageCardComponent = ({ footer, images, title, description }) => {
       </div>
       <div className='card-container'>
         <h3 className='card-title'>{title}</h3>
-        <p className='card-description'>{description}</p>
+        <div>
+          <i className='fas fa-dollar-sign' /> {price}
+        </div>
+        <div>
+          <i className='fas fa-map-marker-alt' /> Ubicación
+        </div>
         {footer && (
           <div className='card-footer'>
             <i className='fas fa-heart'></i>
-            <i className='fas fa-ellipsis-h'></i>
+            <Link className='card-link' to='/about'>
+              <Button className='card-button' icon='eye' type='primary'>
+                Ver
+              </Button>
+            </Link>
           </div>
         )}
       </div>
@@ -25,6 +38,9 @@ const ImageCardComponent = ({ footer, images, title, description }) => {
 };
 
 ImageCardComponent.defaultProps = {
+  title: 'Agrega Titulo',
+  price: 'Proximamente',
+  images: [briGlitch],
   footer: false
 };
 

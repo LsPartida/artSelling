@@ -27,7 +27,11 @@ const SlideshowComponent = ({ images }) => {
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <img className='slide-item' src={images[current]} alt={`Slide item`} />
+      <div
+        className='slide-item'
+        style={{ backgroundImage: `url(${images[current]})` }}
+        alt={`Slide item`}
+      />
     </div>
   );
 };
