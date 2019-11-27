@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './routes/AppRouter.routes';
 
+// * styles
+import './index.css';
+
 // * Ant-Design
 import 'antd/dist/antd.min.css';
 import 'antd/dist/antd.min.js';
