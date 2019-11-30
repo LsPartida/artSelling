@@ -1,0 +1,19 @@
+.login-form {
+  width: 60vh;
+  height: 50vh;
+  margin: 20vh auto 0px auto;
+  background: #222831;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.login-form-forgot {
+}
+.login-form-button {
+  width: 100%;
+}
+
+.user-logo {
+  width: 100px;
+  height: 100px;
+}
