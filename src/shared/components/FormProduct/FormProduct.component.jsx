@@ -1,14 +1,14 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 // * Styles and Ant-Design
-import Logo from '../../../media/localbri-only-bri.png'
 import './formProduct.component.css'
 import { Form, Icon, Input, Button, message, Upload, Modal } from 'antd';
 const { TextArea } = Input;
 const { Dragger} = Upload;
 
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
 
-  
 function FormProduct({form, history}) {
 
 	useEffect(() => {
@@ -20,13 +20,13 @@ function FormProduct({form, history}) {
 	};
 	
 	const error = () => {
-    message.error('This is an error message');
+    message.error('This is an error message');	
 	};
 
 	const handleSubmit = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
-      console.log('TCL: FormRifa -> values', values);
+      console.log('TCL: FormProduct -> values', values);
       if (!err) {
         success();
         history.push('/');
@@ -69,127 +69,130 @@ function FormProduct({form, history}) {
 	 const priceError = isFieldTouched('formPrice') && getFieldError('formPrice');
 	
 	return(
-	<div className="form-background">
-		<div className="form-container">
-			<h2 className="form-title">
-			
-				<span role="img" aria-label="palette">
-					🎨
-				</span>
-				Introduce los datos del producto
-				<span role="img" aria-label="taco">
-					🌮
-				</span>
-			</h2>
-			<Form className="form-antd-container" onSubmit={handleSubmit}>
-				<Form.Item
-					className="form-antd-item"
-					validateStatus={titleError ? 'error' : ''}
-					help={titleError || ''}
-				>
-					{getFieldDecorator('formTitle', {
-						rules: [
-							{ required: true, message: 'Ingrese nombre del producto' }
-						]
-					})(
-						<Input
-							prefix={
-								<Icon type="coffee" style={{ color: 'rgba(0,0,0,.25)' }} />
-							}
-							placeholder="Nombre"
-						/>
-					)}
-				</Form.Item>
-
-				<Form.Item
-					className="form-antd-item"
-					validateStatus={descriptionError ? 'error' : ''}
-					help={descriptionError || ''}
-				>
-					{getFieldDecorator('formDescription', {
-						rules: [
-							{ required: true, message: 'Ingrese una descripción del articulo.' }
-						]
-					})(
-						<TextArea
-                rows={3}
-                prefix={
-                  <Icon type="coffee" style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder="Descripción"
-              />
-					)}
-				</Form.Item>
-
-				<Form.Item
-					className="form-antd-item"
-					validateStatus={uploadError ? 'error' : ''}
-					help={uploadError || ''}
-				>
-					{getFieldDecorator('formUpload', {
-						rules: [
-							{ required: true, message: 'Suabe al menos una imagen del articulo.' }
-						]
-					})(
-						<Dragger {...props}>
-							<p className="ant-upload-drag-icon">
-								<Icon type="inbox" />
-							</p>
-							<p className="ant-upload-text">Haz clic aquí o arrastra tus imagenes para subirlas</p>
-							<p className="ant-upload-hint">
-								Sube un mínimo de 1 imagen o un máximo de 4 imagenes, por favor.
-							</p>
-						</Dragger>
-					)}
-				</Form.Item>
-
-				<Form.Item
-					className="form-antd-item"
-					validateStatus={locationError ? 'error' : ''}
-					help={locationError || ''}
-				>
-					{getFieldDecorator('formLocation', {
-						rules: [
-							{ required: true, message: 'Ingrese su locación o punto de venta' }
-						]
-					})(
-						<Input
-							prefix={
-								<Icon type="environment" style={{ color: 'rgba(0,0,0,.25)' }} />
-							}
-							placeholder="Locación"
-						/>
-					)}
-				</Form.Item>
-
-				<Form.Item
-					className="form-antd-item"
-					validateStatus={priceError ? 'error' : ''}
-					help={priceError || ''}
-				>
-					{getFieldDecorator('formPrice', {
-						rules: [
-							{ required: true, message: 'Ingrese la cantidad de costo del articulo' }
-						]
-					})(
-						<Input
-							prefix={
-								<Icon type="dollar" style={{ color: 'rgba(0,0,0,.25)' }} />
-							}
-							placeholder="Precio"
-						/>
-					)}
-				</Form.Item>
+		<div className="form-background">
+			<div className="form-container">
+				<h2 className="form-title">
 				
-					<Link to='/'>
-						<Button className='gallery-menu-btn' type='primary' icon="tag">
+					<span role="img" aria-label="palette">
+						🎨
+					</span>
+					Datos del producto
+					<span role="img" aria-label="taco">
+						🌮
+					</span>
+				</h2>
+				<Form className="form-antd-container" onSubmit={handleSubmit}>
+					<Form.Item
+						className="form-antd-item"
+						validateStatus={titleError ? 'error' : ''}
+						help={titleError || ''}
+					>
+						{getFieldDecorator('formTitle', {
+							rules: [
+								{ required: true, message: 'Ingrese nombre del producto' }
+							]
+						})(
+							<Input
+								prefix={
+									<Icon type="coffee" style={{ color: 'white' }} />
+								}
+								placeholder="Nombre"
+							/>
+						)}
+					</Form.Item>
+
+					<Form.Item
+						className="form-antd-item"
+						validateStatus={descriptionError ? 'error' : ''}
+						help={descriptionError || ''}
+					>
+						{getFieldDecorator('formDescription', {
+							rules: [
+								{ required: true, message: 'Ingrese una descripción del articulo.' }
+							]
+						})(
+							<TextArea
+								className="form-product-text-area"
+								rows={3}
+								placeholder="Descripción"
+							/>
+						)}
+					</Form.Item>
+
+					<Form.Item
+						className="form-antd-item"
+						validateStatus={uploadError ? 'error' : ''}
+						help={uploadError || ''}
+					>
+						{getFieldDecorator('formUpload', {
+							rules: [
+								{ required: true, message: 'Suabe al menos una imagen del articulo.' }
+							]
+						})(
+							<Dragger {...props}
+								style={{ backgroundColor: '#393e46' }}>
+									<p className="ant-upload-drag-icon">
+										<Icon type="inbox" style={{ color: '#29a19c' }}></Icon>
+									</p>
+									<p className="ant-upload-text">Haz clic aquí o arrastra tus imagenes para subirlas</p>
+									<p className="ant-upload-hint">
+										Sube un mínimo de 1 imagen o un máximo de 4 imagenes, por favor.
+									</p>
+							</Dragger>
+						)}
+					</Form.Item>
+
+					<Form.Item
+						className="form-antd-item"
+						validateStatus={locationError ? 'error' : ''}
+						help={locationError || ''}
+					>
+						{getFieldDecorator('formLocation', {
+							rules: [
+								{ required: true, message: 'Ingrese su ubicación o punto de venta' }
+							]
+						})(
+							<Input
+								prefix={
+									<Icon type="environment" style={{ color: 'white' }} />
+								}
+								placeholder="Ubicación"
+							/>
+						)}
+					</Form.Item>
+
+					<Form.Item
+						className="form-antd-item"
+						validateStatus={priceError ? 'error' : ''}
+						help={priceError || ''}
+					>
+						{getFieldDecorator('formPrice', {
+							rules: [
+								{ required: true, message: 'Ingrese la cantidad de costo del articulo' }
+							]
+						})(
+							<Input
+								prefix={
+									<Icon type="dollar" style={{ color: 'white' }} />
+								}
+								placeholder="Precio"
+							/>
+						)}
+							</Form.Item>
+
+					<Form.Item className="form-item-btn">
+						<Button 
+							type='primary' 
+							icon="tag"
+							htmlType="submit"
+							disabled={hasErrors(getFieldsError())}
+						>
 							Agregar
 						</Button>
-					</Link>
-
-			</Form>
+					</Form.Item>
+				</Form>
+			</div>
 		</div>
-	</div>
 		
 	)
 }
