@@ -19,7 +19,10 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
-        <img className="user-logo" src={user} alt="user" srcset="" />
+        <i
+          className="fas fa-user user-logo"
+          style={{ fontSize: "120px", color: "#393e46" }}
+        ></i>{" "}
         <Form.Item>
           {getFieldDecorator("username", {
             rules: [
@@ -49,10 +52,9 @@ class NormalLoginForm extends React.Component {
           {getFieldDecorator("remember", {
             valuePropName: "checked",
             initialValue: true
-          })(<Checkbox>Recordarme</Checkbox>)}
-          <a className="login-form-forgot" href="">
-            Olvidé el password
-          </a>
+          })(<Checkbox style={{ color: "white" }}>Recordarme</Checkbox>)}
+        </Form.Item>
+        <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
@@ -60,8 +62,16 @@ class NormalLoginForm extends React.Component {
           >
             Logear
           </Button>
-          Or <a href="">Registrarse</a>
         </Form.Item>
+        <Form.Item>
+          <a className="login-form-forgot" href="">
+            Olvidé el password
+          </a>
+          <a className="login-register" href="">
+            Registrarse
+          </a>
+        </Form.Item>
+        <Form.Item></Form.Item>
       </Form>
     );
   }
