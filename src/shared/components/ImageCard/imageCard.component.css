@@ -65,11 +65,15 @@
   border-top: 0.5px solid #29a19c;
 }
 
-.card-footer > i {
+.card-footer > div > i {
   font-size: 25px;
 }
 
-.card-footer > i:hover {
+.card-likes {
+  font-size: 0.6em;
+}
+
+.card-footer > div > i:hover {
   transform: scale(1.2);
   color: #a3f7bf;
   transition: 0.2s;

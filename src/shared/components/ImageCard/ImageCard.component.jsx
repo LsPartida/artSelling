@@ -8,7 +8,14 @@ import { Button } from 'antd';
 // * Utils
 import briGlitch from '../../../media/localbri-glitch.png';
 
-const ImageCardComponent = ({ footer, images, title, description, price }) => {
+const ImageCardComponent = ({
+  footer,
+  images,
+  title,
+  description,
+  price,
+  likes
+}) => {
   return (
     <div className='card'>
       <div className='card-header'>
@@ -24,7 +31,10 @@ const ImageCardComponent = ({ footer, images, title, description, price }) => {
         </div>
         {footer && (
           <div className='card-footer'>
-            <i className='fas fa-heart'></i>
+            <div>
+              <i className='fas fa-heart'></i>{' '}
+              <label className='card-likes'>{likes}</label>
+            </div>
             <Link className='card-link' to='/about'>
               <Button className='card-button' icon='eye' type='primary'>
                 Ver
@@ -41,7 +51,8 @@ ImageCardComponent.defaultProps = {
   title: 'Agrega Titulo',
   price: 'Proximamente',
   images: [briGlitch],
-  footer: false
+  footer: false,
+  likes: 43
 };
 
 export default ImageCardComponent;
