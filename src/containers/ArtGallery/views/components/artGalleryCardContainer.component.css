@@ -1,9 +1,9 @@
 .art-gallery-card-container {
   min-height: 5vh;
-  width: 805px;
+  width: 85vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   justify-items: center;
 }
 /* Media Queries */
