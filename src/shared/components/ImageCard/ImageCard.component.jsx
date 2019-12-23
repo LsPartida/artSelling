@@ -25,7 +25,7 @@ const ImageCardComponent = ({ footer, images, title, description, price }) => {
         {footer && (
           <div className='card-footer'>
             <i className='fas fa-heart'></i>
-            <Link className='card-link' to='/about'>
+            <Link className='card-link' to='/details'>
               <Button className='card-button' icon='eye' type='primary'>
                 Ver
               </Button>

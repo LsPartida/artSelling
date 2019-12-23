@@ -12,7 +12,9 @@ const NavbarHomeComponent = () => {
       <Link to='/about'>
         <label className='navbarHome-sub2-btn-login'>Nosotros</label>
       </Link>
-
+      <Link to='/details'>
+        <label className='navbarHome-sub2-btn-login'>Nosotros</label>
+      </Link>
       <Link to='/login'>
         <label className='navbarHome-sub2-btn-login'>Servicios</label>
       </Link>

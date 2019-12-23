@@ -16,6 +16,10 @@ function PublicRoutes() {
     import('../../shared/components/Error404/Error404.component')
   );
 
+  const ArtGalleryDetails = lazy(() => 
+  import('../../containers/ArtGallery/views/components/ArtGalleryDetails.component')
+  );
+
   // * Loading Element
   const Loading = (
     <div
@@ -38,6 +42,7 @@ function PublicRoutes() {
       <Switch>
         <Route exact path='/' component={HomeContainer} />
         <Route exact path='/galeria' component={ArtGalleryContainer} />
+        <Route exact path='/details' component={ArtGalleryDetails} />
         <Route component={Error404} />
       </Switch>
     </Suspense>
