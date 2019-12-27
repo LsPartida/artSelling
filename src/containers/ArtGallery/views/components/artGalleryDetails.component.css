@@ -1,0 +1,26 @@
+.artDetails {
+    background-color: #222832;
+}
+
+.carousel-containe{
+    border:  1px solid red;
+    background: red;
+    widows: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+  }
+
+.container{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin: 10% 10% 0% 10%;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}

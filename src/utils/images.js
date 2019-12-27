@@ -7,3 +7,15 @@ export const images = [
   'https://hub.umd.edu/sites/default/files/2019-04/image/Students_Outdoors_04152019_9596_1920x1080-min.jpg',
   'https://thenaturebus.com/wp-content/uploads/2017/11/tree-1024x427.jpg'
 ];
+
+export const carouselImages = [
+  {
+    id: 1,
+    url: 'https://thenaturebus.com/wp-content/uploads/2017/11/tree-1024x427.jpg'
+  },
+  {
+    id:3,
+    url: 'https://therightsofnature.org/wp-content/uploads/2018/01/turkey-3048299_1920-1366x550.jpg',
+    
+  }
+]
