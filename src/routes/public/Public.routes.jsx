@@ -15,10 +15,16 @@ function PublicRoutes() {
 
   const UserProfileContainer = lazy(() =>
     import('../../containers/UserProfile/views/UserProfile.container')
-  )
+  );
 
   const Error404 = lazy(() =>
     import('../../shared/components/Error404/Error404.component')
+  );
+
+  const ArtGalleryDetails = lazy(() =>
+    import(
+      '../../containers/ArtGallery/views/components/ArtGalleryDetails.component'
+    )
   );
 
   // * Loading Element
@@ -44,6 +50,7 @@ function PublicRoutes() {
         <Route exact path='/' component={HomeContainer} />
         <Route exact path='/galeria' component={ArtGalleryContainer} />
         <Route exact path='/perfil' component={UserProfileContainer} />
+        <Route exact path='/details' component={ArtGalleryDetails} />
         <Route component={Error404} />
       </Switch>
     </Suspense>
