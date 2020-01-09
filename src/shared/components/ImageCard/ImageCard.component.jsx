@@ -14,7 +14,8 @@ const ImageCardComponent = ({
   title,
   description,
   price,
-  likes
+  likes,
+  ubication
 }) => {
   return (
     <div className='card'>
@@ -27,7 +28,7 @@ const ImageCardComponent = ({
           <i className='fas fa-dollar-sign' /> {price}
         </div>
         <div>
-          <i className='fas fa-map-marker-alt' /> Ubicación
+          <i className='fas fa-map-marker-alt' /> {ubication}
         </div>
         {footer && (
           <div className='card-footer'>
