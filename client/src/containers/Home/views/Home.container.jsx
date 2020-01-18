@@ -8,7 +8,7 @@ import './home.container.css';
 function HomeContainer() {
   return (
     <div className='home-container'>
-      <NavbarHome userData={'juan'} />
+      <NavbarHome />
       <HomeComponent />
       {/* FOOTER */}
     </div>

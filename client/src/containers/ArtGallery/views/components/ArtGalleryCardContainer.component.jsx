@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 // * Component
 import Card from '../../../../shared/components/ImageCard/ImageCard.component';
 import images from '../../../../utils/images';
 // * Styles
 import './artGalleryCardContainer.component.css';
+// * Actions
+import { getAllProducts } from '../../../../actions/productActions';
 
-const ArtGalleryCardContainer = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+const ArtGalleryCardContainer = ({ getAllProducts, products, loading }) => {
+  const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
-    getItems();
+    getAllProducts();
     //eslint-disable-next-line
   }, []);
-
-  const getItems = async () => {
-    setLoading(true);
-    const res = await fetch('/products');
-    const data = await res.json();
-
-    setItems(data);
-    setLoading(false);
-  };
 
   if (loading) {
     return <h4>Cargando...</h4>;
@@ -29,14 +22,14 @@ const ArtGalleryCardContainer = () => {
 
   return (
     <div className='art-gallery-card-container'>
-      {!loading && items.length === 0 ? (
+      {!loading && products.length === 0 ? (
         <p>No hay productos publicados</p>
       ) : (
-        items.map(card => {
+        products.map(card => {
           return (
             <Card
               key={card.id}
-              images={card.urlImage}
+              images={[card.urlImage]}
               title={card.productName}
               price={card.productPrice}
               ubication={card.productUbication}
@@ -51,4 +44,11 @@ const ArtGalleryCardContainer = () => {
   );
 };
 
-export default ArtGalleryCardContainer;
+const mapStateToProps = state => ({
+  products: state.products.products,
+  loading: state.products.loading
+});
+
+export default connect(mapStateToProps, {
+  getAllProducts
+})(ArtGalleryCardContainer);

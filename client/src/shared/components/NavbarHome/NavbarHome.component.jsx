@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 // * Styles and Ant-Design
 import './navbarHome.component.css';
 import { Popover, Icon } from 'antd';
 import logo from '../../../media/localbri.png';
+// * Actions
+import { logout } from '../../../actions/authActions';
 
-const NavbarHomeComponent = ({ userData }) => {
+const NavbarHomeComponent = ({ user: { name }, logout }) => {
   const [session, setSession] = useState(null);
-
+  let history = useHistory();
   useEffect(() => {
-    console.log(userData);
-    if (userData) {
-      setSession(() => userData);
+    console.log('nombre', name);
+    if (name) {
+      setSession(() => name);
     }
-  }, [userData]);
+  }, [name]);
+
+  const onLogout = () => {
+    logout();
+    history.push('/');
+  };
 
   // * CONTENT WITHOUT SESSION
   const contentWithoutSession = (
@@ -21,9 +29,7 @@ const NavbarHomeComponent = ({ userData }) => {
       <Link to='/about'>
         <label className='navbarHome-sub2-btn-login'>Nosotros</label>
       </Link>
-      <Link to='/details'>
-        <label className='navbarHome-sub2-btn-login'>Nosotros</label>
-      </Link>
+
       <Link to='/login'>
         <label className='navbarHome-sub2-btn-login'>Servicios</label>
       </Link>
@@ -32,7 +38,7 @@ const NavbarHomeComponent = ({ userData }) => {
         <label className='navbarHome-sub2-btn-login'>Iniciar Sesión</label>
       </Link>
 
-      <Link to='/register'>
+      <Link to='/registro'>
         <label className='navbarHome-sub2-btn-login'>Registrarse</label>
       </Link>
     </div>
@@ -49,8 +55,12 @@ const NavbarHomeComponent = ({ userData }) => {
         <label className='navbarHome-sub2-btn-login'>Servicios</label>
       </Link>
 
+      <label onClick={onLogout} className='navbarHome-sub2-btn-login'>
+        Cerrar Sesión
+      </label>
+
       <Link to='/login'>
-        <label className='navbarHome-sub2-btn-login'>| 😊 Juan</label>
+        <label className='navbarHome-sub2-btn-login'>| 😊 {name}</label>
       </Link>
     </div>
   );
@@ -86,4 +96,8 @@ const NavbarHomeComponent = ({ userData }) => {
   );
 };
 
-export default NavbarHomeComponent;
+const mapStateToProps = state => ({
+  user: state.auth.user
+});
+
+export default connect(mapStateToProps, { logout })(NavbarHomeComponent);

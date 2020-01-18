@@ -1,13 +1,27 @@
-// import React from 'react';
-// import { Route } from 'react-router-dom';
-
-// * All the Private Routes
-
-const PrivateRoutes = () => {
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+const PrivateRoutes = ({
+  component: { Component, ...rest },
+  isAuthenticated,
+  loading
+}) => {
   return (
-    //   <Route path='' component={} />
-    null
+    <Route
+      {...rest}
+      render={props =>
+        !isAuthenticated && !loading ? (
+          <Redirect to='/' />
+        ) : (
+          <Component {...props} />
+        )
+      }
+    />
   );
 };
 
-export default PrivateRoutes;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading
+});
+export default connect(null, {})(PrivateRoutes);
