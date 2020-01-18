@@ -8,7 +8,12 @@ import './artGalleryCardContainer.component.css';
 // * Actions
 import { getAllProducts } from '../../../../actions/productActions';
 
-const ArtGalleryCardContainer = ({ getAllProducts, products, loading }) => {
+const ArtGalleryCardContainer = ({
+  getAllProducts,
+  products,
+  loading,
+  filteredProducts
+}) => {
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
@@ -24,11 +29,26 @@ const ArtGalleryCardContainer = ({ getAllProducts, products, loading }) => {
     <div className='art-gallery-card-container'>
       {!loading && products.length === 0 ? (
         <p>No hay productos publicados</p>
+      ) : filteredProducts !== null ? (
+        filteredProducts.map(card => {
+          return (
+            <Card
+              key={card._id}
+              images={[card.urlImage]}
+              title={card.productName}
+              price={card.productPrice}
+              ubication={card.productUbication}
+              userRouter={card.urlDetails}
+              likes={card.productLikes}
+              footer={true}
+            />
+          );
+        })
       ) : (
         products.map(card => {
           return (
             <Card
-              key={card.id}
+              key={card._id}
               images={[card.urlImage]}
               title={card.productName}
               price={card.productPrice}
@@ -46,7 +66,8 @@ const ArtGalleryCardContainer = ({ getAllProducts, products, loading }) => {
 
 const mapStateToProps = state => ({
   products: state.products.products,
-  loading: state.products.loading
+  loading: state.products.loading,
+  filteredProducts: state.products.filteredProducts
 });
 
 export default connect(mapStateToProps, {

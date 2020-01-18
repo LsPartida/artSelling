@@ -4,8 +4,8 @@ import {
   DELETE_PRODUCT,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_CONTACT,
-  FILTER_CONTACT,
+  UPDATE_PRODDUCT,
+  FILTER_PRODUCT,
   CLEAR_FILTER,
   GET_ALL_PRODUCTS,
   GET_USER_PRODUCTS,
@@ -14,6 +14,31 @@ import {
   PRODUCT_ERROR
 } from './types';
 import Axios from 'axios';
+
+// Add product
+
+// Delete product
+
+// Set current product
+
+// Clear current product
+
+// Update product
+
+// Filter products
+export const filterProduct = text => dispatch => {
+  dispatch({
+    type: FILTER_PRODUCT,
+    payload: text
+  });
+};
+
+// Clear Filter
+export const clearFilter = () => dispatch => {
+  dispatch({
+    type: CLEAR_FILTER
+  });
+};
 
 // Get all products just for the gallery
 export const getAllProducts = () => async dispatch => {
@@ -30,3 +55,9 @@ export const getAllProducts = () => async dispatch => {
     });
   }
 };
+
+// Get user product
+
+// Clear all products
+
+// Clear user products
