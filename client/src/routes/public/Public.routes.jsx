@@ -57,7 +57,7 @@ function PublicRoutes() {
       <Switch>
         <Route exact path='/' component={HomeContainer} />
         <Route exact path='/galeria' component={ArtGalleryContainer} />
-        <PrivateRoute exact path='/perfil' component={UserProfileContainer} />
+        <Route exact path='/perfil' component={UserProfileContainer} />
         <Route exact path='/details' component={ArtGalleryDetails} />
         <Route exact path='/login' component={LoginContainer} />
         <Route exact path='/registro' component={RegisterContainer} />
