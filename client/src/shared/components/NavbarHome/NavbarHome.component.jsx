@@ -30,8 +30,8 @@ const NavbarHomeComponent = ({ user: { name }, logout }) => {
         <label className='navbarHome-sub2-btn-login'>Nosotros</label>
       </Link>
 
-      <Link to='/login'>
-        <label className='navbarHome-sub2-btn-login'>Servicios</label>
+      <Link to='/galeria'>
+        <label className='navbarHome-sub2-btn-login'>Tienda</label>
       </Link>
 
       <Link to='/login'>
@@ -51,8 +51,8 @@ const NavbarHomeComponent = ({ user: { name }, logout }) => {
         <label className='navbarHome-sub2-btn-login'>Nosotros</label>
       </Link>
 
-      <Link to='/login'>
-        <label className='navbarHome-sub2-btn-login'>Servicios</label>
+      <Link to='/galeria'>
+        <label className='navbarHome-sub2-btn-login'>Tienda</label>
       </Link>
 
       <label onClick={onLogout} className='navbarHome-sub2-btn-login'>

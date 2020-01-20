@@ -24,4 +24,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   loading: state.auth.loading
 });
-export default connect(null, {})(PrivateRoutes);
+export default connect(mapStateToProps, {})(PrivateRoutes);

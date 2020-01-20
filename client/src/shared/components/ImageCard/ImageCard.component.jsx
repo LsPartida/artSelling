@@ -36,8 +36,6 @@ const ImageCardComponent = ({
               <i className='fas fa-heart'></i>{' '}
               <label className='card-likes'>{likes}</label>
             </div>
-            <Link className='card-link' to='/about' />
-            <i className='fas fa-heart'></i>
             <Link className='card-link' to='/details'>
               <Button className='card-button' icon='eye' type='primary'>
                 Ver

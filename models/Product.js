@@ -13,8 +13,8 @@ const ProductSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  urlImage: {
-    type: String,
+  galeryImgUrls: {
+    type: Array,
     required: true
   },
   productUbication: {

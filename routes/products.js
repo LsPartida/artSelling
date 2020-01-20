@@ -54,7 +54,7 @@ router.post(
     const {
       productName,
       productDescripcion,
-      urlImage,
+      galeryImgUrls,
       productUbication,
       productPrice,
       productLikes,
@@ -65,7 +65,7 @@ router.post(
       const newProduct = new Product({
         productName,
         productDescripcion,
-        urlImage,
+        galeryImgUrls,
         productUbication,
         productPrice,
         productLikes,
@@ -93,7 +93,7 @@ router.put('/:id', auth, async (req, res) => {
   const {
     productName,
     productDescripcion,
-    urlImage,
+    galeryImgUrls,
     productUbication,
     productPrice
   } = req.body;
@@ -102,7 +102,7 @@ router.put('/:id', auth, async (req, res) => {
   const productFields = {};
   if (productName) productFields.productName = productName;
   if (productDescripcion) productFields.productDescripcion = productDescripcion;
-  if (urlImage) productFields.urlImage = urlImage;
+  if (galeryImgUrls) productFields.galeryImgUrls = urlImage;
   if (productUbication) productFields.productUbication = productUbication;
   if (productPrice) productFields.productPrice = productPrice;
 
