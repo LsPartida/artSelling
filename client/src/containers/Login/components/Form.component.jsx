@@ -22,7 +22,6 @@ function NormalLoginForm({
 }) {
   let history = useHistory();
   useEffect(() => {
-    console.log('useEffect', error);
     if (isAuthenticated) {
       history.push('/');
     }
@@ -36,11 +35,9 @@ function NormalLoginForm({
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         if (values.email === '' || values.password === '') {
           setAlert('Porfavor llena todos los campos', 'warning');
         } else {
-          console.log('login', isAuthenticated);
           login({
             email: values.username,
             password: values.password

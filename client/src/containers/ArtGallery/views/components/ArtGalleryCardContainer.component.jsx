@@ -14,8 +14,6 @@ const ArtGalleryCardContainer = ({
   loading,
   filteredProducts
 }) => {
-  const [productsData, setProductsData] = useState([]);
-
   useEffect(() => {
     getAllProducts();
     //eslint-disable-next-line
@@ -34,7 +32,7 @@ const ArtGalleryCardContainer = ({
           return (
             <Card
               key={card._id}
-              images={[card.urlImage]}
+              images={card.galeryImgUrls}
               title={card.productName}
               price={card.productPrice}
               ubication={card.productUbication}
@@ -49,7 +47,7 @@ const ArtGalleryCardContainer = ({
           return (
             <Card
               key={card._id}
-              images={[card.urlImage]}
+              images={card.galeryImgUrls}
               title={card.productName}
               price={card.productPrice}
               ubication={card.productUbication}
