@@ -3,7 +3,9 @@ import React from 'react';
 import UserProfileMenuComponent from '../components/UserProfileMenu.component';
 import FormProduct from '../../../shared/components/FormProduct/FormProduct.component';
 import UserProfileEdit from '../components/UserProfileEdit.component';
+import ArtGalleryDetailsComponent from '../../ArtGallery/views/components/ArtGalleryDetails.component';
 // * Utils
+import { carouselImages } from '../../../utils/images';
 // * Styles
 import './userProfile.component.css';
 
@@ -23,6 +25,17 @@ const UserProfileComponent = () => {
         userTw={'https://twitter.com/NASA'}
         userIg={'https://www.instagram.com/nasa/'}
       />
+
+      <ArtGalleryDetailsComponent
+        carouselImages={carouselImages}
+        title={'Galeria Natural'}
+        description={
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore eum perferendis sunt eaque, quis eligendi qui animi at est culpa beatae, iure quaerat labore. Repellendus ea earum facilis nesciunt quidem!'
+        }
+        price={'340.00'}
+        location={'Zapopan, Guadalajara'}
+      />
+
       <FormProduct />
     </div>
   );

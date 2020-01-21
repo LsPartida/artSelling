@@ -78,3 +78,30 @@
   color: #a3f7bf;
   transition: 0.2s;
 }
+
+.imageCard-modal {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
+  /* padding: 10px; */
+}
+
+.ant-modal-content {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.ant-modal-footer {
+  background: rgba(0, 0, 0, 0);
+  border-top: 1px solid transparent;
+}
+
+.anticon {
+  color: white;
+}
+
+.ant-modal-footer {
+  display: none;
+}
