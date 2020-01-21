@@ -27,3 +27,7 @@
   margin: 0;
   padding: 0;
 }
+
+.carousel .slide img {
+  width: 400px;
+}
