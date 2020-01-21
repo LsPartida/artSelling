@@ -12,7 +12,8 @@ function ArtGalleryDetailsComponent({
   title,
   description,
   price,
-  location
+  location,
+  likes
 }) {
   return (
     <div className='artGalleryDetails'>
@@ -27,7 +28,7 @@ function ArtGalleryDetailsComponent({
             <h2 className='artGalleryDetails-cont-2-title'>{title}</h2>
             <div className='artGalleryDetails-cont-2-heart'>
               <i className='fas fa-heart'></i>
-              <label className='artGalleryDetails-cont-2-likes'>28</label>
+              <label className='artGalleryDetails-cont-2-likes'>{likes}</label>
             </div>
           </div>
           <p className='artGalleryDetails-cont-2-desc'>{description}</p>

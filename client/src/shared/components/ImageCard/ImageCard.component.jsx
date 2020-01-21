@@ -34,7 +34,9 @@ function ImageCardComponent({
 
   // * Create the correct Array for the Carousel
   const imagesArrayToCarouselArray = imagesArray => {
-    let carouselArray = [];
+    let carouselArray = imagesArray.map((el, i) => {
+      return { id: i, url: el };
+    });
     return carouselArray;
   };
 
@@ -43,7 +45,7 @@ function ImageCardComponent({
       <div className='card'>
         <div className='card-header'>
           <Slideshow images={images} />
-          {console.log(images)}
+          {console.log(imagesArrayToCarouselArray(images))}
         </div>
         <div className='card-container'>
           <h3 className='card-title'>{title}</h3>
@@ -80,11 +82,12 @@ function ImageCardComponent({
         width={'50vw'}
       >
         <ArtGalleryDetailsComponent
-          carouselImages={images}
+          carouselImages={imagesArrayToCarouselArray(images)}
           title={title}
-          description={'Lorem ipsendi qui animi at est culpa beatae, iu!'}
-          price={'340.00'}
-          location={'Zapopan, Guadalajara'}
+          description={description}
+          price={price}
+          location={ubication}
+          likes={likes}
         />
       </Modal>
     </div>
