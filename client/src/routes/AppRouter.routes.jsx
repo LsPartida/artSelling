@@ -4,18 +4,24 @@ import { connect } from 'react-redux';
 import { loadUser } from '../actions/authActions';
 
 import PublicRoutes from './public/Public.routes';
+import PrivateRoutes from './private/Private.routes';
 
 import App from '../App/App';
 
-const AppRouter = ({ loadUser }) => {
+const AppRouter = ({ loadUser, isAuthenticated, loading }) => {
   loadUser();
   return (
     <App>
       <Switch>
-        <PublicRoutes />
+        {!isAuthenticated && !loading ? <PublicRoutes /> : <PrivateRoutes />}
       </Switch>
     </App>
   );
 };
 
-export default connect(null, { loadUser })(AppRouter);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading
+});
+
+export default connect(mapStateToProps, { loadUser })(AppRouter);

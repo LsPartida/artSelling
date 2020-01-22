@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+import axios from 'axios';
 import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
@@ -13,15 +14,40 @@ import {
   CLEAR_USER_PRODUCTS,
   PRODUCT_ERROR
 } from './types';
-import Axios from 'axios';
 
 // Add product
+export const addProduct = product => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
 
+  try {
+    console.log(product);
+    const res = await axios.post('/api/products', product, config);
+
+    dispatch({
+      type: ADD_PRODUCT,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error
+    });
+  }
+};
 // Delete product
 
 // Set current product
 
 // Clear current product
+export const clearCurrentProduct = () => dispatch => {
+  dispatch({
+    type: CLEAR_CURRENT
+  });
+};
 
 // Update product
 
@@ -43,7 +69,7 @@ export const clearFilter = () => dispatch => {
 // Get all products just for the gallery
 export const getAllProducts = () => async dispatch => {
   try {
-    const res = await Axios.get('api/products/all');
+    const res = await axios.get('api/products/all');
     dispatch({
       type: GET_ALL_PRODUCTS,
       payload: res.data

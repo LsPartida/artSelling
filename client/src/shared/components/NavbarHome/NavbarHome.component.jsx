@@ -8,7 +8,7 @@ import logo from '../../../media/localbri.png';
 // * Actions
 import { logout } from '../../../actions/authActions';
 
-const NavbarHomeComponent = ({ user: { name }, logout }) => {
+const NavbarHomeComponent = ({ user: { name }, logout, _userId }) => {
   const [session, setSession] = useState(null);
   let history = useHistory();
   useEffect(() => {
@@ -59,7 +59,7 @@ const NavbarHomeComponent = ({ user: { name }, logout }) => {
         Cerrar Sesión
       </label>
 
-      <Link to='/login'>
+      <Link to={`/perfil/${_userId}`}>
         <label className='navbarHome-sub2-btn-login'>| 😊 {name}</label>
       </Link>
     </div>
@@ -97,7 +97,8 @@ const NavbarHomeComponent = ({ user: { name }, logout }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.auth.user,
+  _userId: state.auth.user._id
 });
 
 export default connect(mapStateToProps, { logout })(NavbarHomeComponent);
