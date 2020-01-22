@@ -30,18 +30,6 @@ const ArtGalleryCardContainer = ({
 
   return (
     <Fragment>
-      {location.pathname !== '/galeria' && (
-        <h2 className='card-container-title'>
-          <span role='img' aria-label='palette'>
-            🎨
-          </span>
-          {`    Mis Productos    `}
-          <span role='img' aria-label='taco'>
-            🌮
-          </span>
-        </h2>
-      )}
-
       <div className='art-gallery-card-container'>
         {!loading && products.length === 0 ? (
           <p>No hay productos publicados</p>
