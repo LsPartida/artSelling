@@ -4,6 +4,8 @@ import UserProfileMenuComponent from '../components/UserProfileMenu.component';
 import FormProduct from '../../../shared/components/FormProduct/FormProduct.component';
 import UserProfileEdit from '../components/UserProfileEdit.component';
 import ArtGalleryDetailsComponent from '../../ArtGallery/views/components/ArtGalleryDetails.component';
+import ArtGallery from '../../ArtGallery/views/components/ArtGalleryCardContainer.component';
+import Search from '../../../shared/components/SearchInput/Search.component';
 // * Utils
 import { carouselImages } from '../../../utils/images';
 // * Styles
@@ -37,6 +39,11 @@ const UserProfileComponent = () => {
       />
 
       <FormProduct />
+
+      <div className='filter-search-container'>
+        <Search />
+      </div>
+      <ArtGallery />
     </div>
   );
 };
