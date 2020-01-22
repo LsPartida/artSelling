@@ -11,7 +11,6 @@ const HomeComponent = () => {
     <div className='home-component'>
       <MainHome />
       <ServicesHome />
-      <div className='home-section-3'>Seccion 3 - Mapa</div>
     </div>
   );
 };
