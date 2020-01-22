@@ -26,6 +26,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        products: [...state.products, action.payload]
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -49,6 +54,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: null
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        currentProduct: null
+      };
+    case PRODUCT_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

@@ -48,7 +48,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ msg: errors.array() });
     }
 
     const {
@@ -58,7 +58,8 @@ router.post(
       productUbication,
       productPrice,
       productLikes,
-      urlDetails
+      urlDetails,
+      category
     } = req.body;
 
     try {
@@ -70,6 +71,7 @@ router.post(
         productPrice,
         productLikes,
         urlDetails,
+        category,
         user: req.user.id
       });
 
@@ -95,7 +97,8 @@ router.put('/:id', auth, async (req, res) => {
     productDescripcion,
     galeryImgUrls,
     productUbication,
-    productPrice
+    productPrice,
+    category
   } = req.body;
 
   // product Object to update
@@ -105,6 +108,7 @@ router.put('/:id', auth, async (req, res) => {
   if (galeryImgUrls) productFields.galeryImgUrls = urlImage;
   if (productUbication) productFields.productUbication = productUbication;
   if (productPrice) productFields.productPrice = productPrice;
+  if (category) productFields.category = category;
 
   try {
     let product = await Product.findById(req.params.id);

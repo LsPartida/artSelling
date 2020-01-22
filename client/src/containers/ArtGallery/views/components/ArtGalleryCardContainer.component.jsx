@@ -29,10 +29,11 @@ const ArtGalleryCardContainer = ({
         <p>No hay productos publicados</p>
       ) : filteredProducts !== null ? (
         filteredProducts.map(card => {
+          console.log(card.galeryImgUrls);
           return (
             <Card
               key={card._id}
-              images={card.galeryImgUrls}
+              images={card.galeryImgUrls.length !== 0 && card.galeryImgUrls}
               title={card.productName}
               price={card.productPrice}
               ubication={card.productUbication}
@@ -44,10 +45,20 @@ const ArtGalleryCardContainer = ({
         })
       ) : (
         products.map(card => {
-          return (
+          return card.galeryImgUrls.length !== 0 ? (
             <Card
               key={card._id}
               images={card.galeryImgUrls}
+              title={card.productName}
+              price={card.productPrice}
+              ubication={card.productUbication}
+              userRouter={card.urlDetails}
+              likes={card.productLikes}
+              footer={true}
+            />
+          ) : (
+            <Card
+              key={card._id}
               title={card.productName}
               price={card.productPrice}
               ubication={card.productUbication}

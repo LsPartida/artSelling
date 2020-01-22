@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import PrivateRoute from '../private/Private.routes';
 // * Switch and Route
 import { Switch, Route } from 'react-router-dom';
 // * Ant-Design
@@ -57,7 +56,6 @@ function PublicRoutes() {
       <Switch>
         <Route exact path='/' component={HomeContainer} />
         <Route exact path='/galeria' component={ArtGalleryContainer} />
-        <Route exact path='/perfil' component={UserProfileContainer} />
         <Route exact path='/details' component={ArtGalleryDetails} />
         <Route exact path='/login' component={LoginContainer} />
         <Route exact path='/registro' component={RegisterContainer} />
