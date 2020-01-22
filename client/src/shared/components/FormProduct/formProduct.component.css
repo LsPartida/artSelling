@@ -1,4 +1,4 @@
-.form-backgroud{
+.form-backgroud {
   width: 100%;
   padding: 15px 30px;
   display: flex;
@@ -7,39 +7,38 @@
   align-items: center;
 }
 
-.form-container{
+.form-container {
   background-color: #222831;
   border-radius: 8px;
-  margin: 20px;
+  /* margin: 20px; */
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
-.form-title{
+.form-title {
   color: #29a19c;
 }
 
-.form-antd-item Input,
-.form-antd-item TextArea{
+.form-antd-item input,
+.form-antd-item textarea {
   background-color: #393e46;
   color: white;
   border: none;
 }
 
-.form-antd-item Input::placeholder{
+.form-antd-item input::placeholder {
   color: white;
 }
 
-.ant-input{
+.ant-input {
   background-color: #393e46 !important;
 }
 /* BACKGORUND COLOR CHANGES AT INPUTS */
-.has-error .ant-input-affix-wrapper .ant-input, 
+.has-error .ant-input-affix-wrapper .ant-input,
 .has-error .ant-input-affix-wrapper .ant-input:hover,
-.ant-input { 
+.ant-input {
   background-color: #393e46;
 }
 
@@ -48,11 +47,11 @@
   color: white;
 }
 
-.ant-upload.ant-upload-drag p.ant-upload-hint{
+.ant-upload.ant-upload-drag p.ant-upload-hint {
   color: rgb(179, 179, 179);
 }
 
-.form-item-btn{
+.form-item-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
