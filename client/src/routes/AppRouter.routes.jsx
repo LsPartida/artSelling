@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUser } from '../actions/authActions';
@@ -9,7 +9,10 @@ import PrivateRoutes from './private/Private.routes';
 import App from '../App/App';
 
 const AppRouter = ({ loadUser, isAuthenticated, loading }) => {
-  loadUser();
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
   return (
     <App>
       <Switch>

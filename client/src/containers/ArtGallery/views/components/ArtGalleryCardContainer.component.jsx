@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 // * Component
 import Card from '../../../../shared/components/ImageCard/ImageCard.component';
-import images from '../../../../utils/images';
 // * Styles
 import './artGalleryCardContainer.component.css';
 // * Actions
-import { getAllProducts } from '../../../../actions/productActions';
+import {
+  getAllProducts,
+  getUserProducts
+} from '../../../../actions/productActions';
 
 const ArtGalleryCardContainer = ({
   getAllProducts,
+  getUserProducts,
   products,
   loading,
   filteredProducts
 }) => {
+  const location = useLocation();
   useEffect(() => {
-    getAllProducts();
+    location.pathname !== '/galeria' ? getUserProducts() : getAllProducts();
     //eslint-disable-next-line
   }, []);
 
@@ -24,54 +29,56 @@ const ArtGalleryCardContainer = ({
   }
 
   return (
-    <div className='art-gallery-card-container'>
-      {!loading && products.length === 0 ? (
-        <p>No hay productos publicados</p>
-      ) : filteredProducts !== null ? (
-        filteredProducts.map(card => {
-          console.log(card.galeryImgUrls);
-          return (
-            <Card
-              key={card._id}
-              images={card.galeryImgUrls.length !== 0 && card.galeryImgUrls}
-              title={card.productName}
-              description={card.productDescripcion}
-              price={card.productPrice}
-              ubication={card.productUbication}
-              userRouter={card.urlDetails}
-              likes={card.productLikes}
-              footer={true}
-            />
-          );
-        })
-      ) : (
-        products.map(card => {
-          return card.galeryImgUrls.length !== 0 ? (
-            <Card
-              key={card._id}
-              images={card.galeryImgUrls}
-              title={card.productName}
-              description={card.productDescripcion}
-              price={card.productPrice}
-              ubication={card.productUbication}
-              userRouter={card.urlDetails}
-              likes={card.productLikes}
-              footer={true}
-            />
-          ) : (
-            <Card
-              key={card._id}
-              title={card.productName}
-              price={card.productPrice}
-              ubication={card.productUbication}
-              userRouter={card.urlDetails}
-              likes={card.productLikes}
-              footer={true}
-            />
-          );
-        })
-      )}
-    </div>
+    <Fragment>
+      <div className='art-gallery-card-container'>
+        {!loading && products.length === 0 ? (
+          <p>No hay productos publicados</p>
+        ) : filteredProducts !== null ? (
+          filteredProducts.map(card => {
+            console.log(card.galeryImgUrls);
+            return (
+              <Card
+                key={card._id}
+                images={card.galeryImgUrls.length !== 0 && card.galeryImgUrls}
+                title={card.productName}
+                description={card.productDescripcion}
+                price={card.productPrice}
+                ubication={card.productUbication}
+                userRouter={card.urlDetails}
+                likes={card.productLikes}
+                footer={true}
+              />
+            );
+          })
+        ) : (
+          products.map(card => {
+            return card.galeryImgUrls.length !== 0 ? (
+              <Card
+                key={card._id}
+                images={card.galeryImgUrls}
+                title={card.productName}
+                description={card.productDescripcion}
+                price={card.productPrice}
+                ubication={card.productUbication}
+                userRouter={card.urlDetails}
+                likes={card.productLikes}
+                footer={true}
+              />
+            ) : (
+              <Card
+                key={card._id}
+                title={card.productName}
+                price={card.productPrice}
+                ubication={card.productUbication}
+                userRouter={card.urlDetails}
+                likes={card.productLikes}
+                footer={true}
+              />
+            );
+          })
+        )}
+      </div>
+    </Fragment>
   );
 };
 
@@ -82,5 +89,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-  getAllProducts
+  getAllProducts,
+  getUserProducts
 })(ArtGalleryCardContainer);

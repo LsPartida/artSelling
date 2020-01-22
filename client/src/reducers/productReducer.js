@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
         products: [...state.products, action.payload]
       };
     case GET_ALL_PRODUCTS:
+    case GET_USER_PRODUCTS:
       return {
         ...state,
         products: action.payload,

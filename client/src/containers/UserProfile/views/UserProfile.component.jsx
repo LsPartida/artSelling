@@ -3,6 +3,11 @@ import React, { useRef } from 'react';
 import UserProfileMenuComponent from '../components/UserProfileMenu.component';
 import FormProduct from '../../../shared/components/FormProduct/FormProduct.component';
 import UserProfileEdit from '../components/UserProfileEdit.component';
+import ArtGalleryDetailsComponent from '../../ArtGallery/views/components/ArtGalleryDetails.component';
+import ArtGallery from '../../ArtGallery/views/components/ArtGalleryCardContainer.component';
+import Search from '../../../shared/components/SearchInput/Search.component';
+// * Utils
+import { carouselImages } from '../../../utils/images';
 // * Styles
 import './userProfile.component.css';
 
@@ -24,8 +29,22 @@ function UserProfileComponent() {
         section5={userProfileSection5Ref}
       />
 
+      <FormProduct />
+
       <div className='user-profile-section-1' ref={userProfileSection1Ref}>
-        <h2>Seccion 1: Mis Productos</h2>
+        <div className='filter-search-container'>
+          <h2 className='card-container-title'>
+            <span role='img' aria-label='palette'>
+              🎨
+            </span>
+            {`    Mis Productos    `}
+            <span role='img' aria-label='taco'>
+              🌮
+            </span>
+          </h2>
+          <Search />
+        </div>
+        <ArtGallery />
       </div>
       <div className='user-profile-section-2' ref={userProfileSection2Ref}>
         <FormProduct />

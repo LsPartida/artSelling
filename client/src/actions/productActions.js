@@ -77,13 +77,27 @@ export const getAllProducts = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: PRODUCT_ERROR,
-      payload: error.response.msg
+      payload: error
     });
   }
 };
 
 // Get user product
+export const getUserProducts = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/products');
 
+    dispatch({
+      type: GET_USER_PRODUCTS,
+      payload: res.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error.response.msg
+    });
+  }
+};
 // Clear all products
 
 // Clear user products
