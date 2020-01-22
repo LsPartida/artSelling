@@ -35,6 +35,7 @@ const ArtGalleryCardContainer = ({
               key={card._id}
               images={card.galeryImgUrls.length !== 0 && card.galeryImgUrls}
               title={card.productName}
+              description={card.productDescripcion}
               price={card.productPrice}
               ubication={card.productUbication}
               userRouter={card.urlDetails}
@@ -50,6 +51,7 @@ const ArtGalleryCardContainer = ({
               key={card._id}
               images={card.galeryImgUrls}
               title={card.productName}
+              description={card.productDescripcion}
               price={card.productPrice}
               ubication={card.productUbication}
               userRouter={card.urlDetails}
