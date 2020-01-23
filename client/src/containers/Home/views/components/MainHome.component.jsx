@@ -16,7 +16,7 @@ const MainHome = () => {
           increible producto. Aporta a tu region algo que no existia antes.
         </h3>
         <div className='main-home-btns'>
-          <Link to='/register'>
+          <Link to='/registro'>
             <Button className='main-home-btn1' icon='user' type='primary'>
               Registrarse
             </Button>

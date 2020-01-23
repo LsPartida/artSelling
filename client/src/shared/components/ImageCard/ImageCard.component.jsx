@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 // * Components
 import Slideshow from '../Slideshow/Slideshow.component';
 import ArtGalleryDetailsComponent from '../../../containers/ArtGallery/views/components/ArtGalleryDetails.component';
@@ -8,23 +10,31 @@ import './imageCard.component.css';
 import { Button, Modal } from 'antd';
 // * Utils
 import briGlitch from '../../../media/localbri-glitch.png';
-import { carouselImages } from '../../../utils/images';
+// * Actions
+import { deleteProduct } from '../../../actions/productActions';
 
 function ImageCardComponent({
+  deleteProduct,
   footer,
   images,
   title,
   description,
   price,
   likes,
-  ubication
+  ubication,
+  id
 }) {
   // * Consts
   const [visible, setVisible] = useState(false);
+  const location = useLocation();
 
   // * Methods for the modal
   const showModal = () => {
     setVisible(true);
+  };
+
+  const onDelete = () => {
+    deleteProduct(id);
   };
 
   const handleCancel = e => {
@@ -45,7 +55,6 @@ function ImageCardComponent({
       <div className='card'>
         <div className='card-header'>
           <Slideshow images={images} />
-          {console.log(imagesArrayToCarouselArray(images))}
         </div>
         <div className='card-container'>
           <h3 className='card-title'>{title}</h3>
@@ -74,6 +83,14 @@ function ImageCardComponent({
             </div>
           )}
         </div>
+        {location.pathname !== '/galeria' && (
+          <Button
+            className='card-button-delete'
+            icon='close'
+            type='danger'
+            onClick={onDelete}
+          />
+        )}
       </div>
       <Modal
         className='imageCard-modal'
@@ -102,4 +119,6 @@ ImageCardComponent.defaultProps = {
   likes: 43
 };
 
-export default ImageCardComponent;
+export default connect(null, {
+  deleteProduct
+})(ImageCardComponent);
