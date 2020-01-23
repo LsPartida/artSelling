@@ -39,7 +39,21 @@ export const addProduct = product => async dispatch => {
   }
 };
 // Delete product
+export const deleteProduct = id => async dispatch => {
+  try {
+    await axios.delete(`/api/products/${id}`);
 
+    dispatch({
+      type: DELETE_PRODUCT,
+      payload: id
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error
+    });
+  }
+};
 // Set current product
 
 // Clear current product
@@ -94,7 +108,7 @@ export const getUserProducts = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: PRODUCT_ERROR,
-      payload: error.response.msg
+      payload: error
     });
   }
 };
