@@ -1,5 +1,4 @@
 import React from 'react';
-
 // * Components
 import UserProfile from './UserProfile.component';
 // * Styles
