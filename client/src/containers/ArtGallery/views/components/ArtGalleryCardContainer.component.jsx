@@ -25,7 +25,11 @@ const ArtGalleryCardContainer = ({
   }, []);
 
   if (loading) {
-    return <h4>Cargando...</h4>;
+    return location.pathname !== '/galeria' ? (
+      <h4>No has publicado ni un producto...</h4>
+    ) : (
+      <h4>Cargando...</h4>
+    );
   }
 
   return (
