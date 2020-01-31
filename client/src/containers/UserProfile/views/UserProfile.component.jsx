@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 // * Components
+import CreditCardForm from '../components/CreditCardForm.component';
 import UserProfileMenuComponent from '../components/UserProfileMenu.component';
 import FormProduct from '../../../shared/components/FormProduct/FormProduct.component';
 import UserProfileEdit from '../components/UserProfileEdit.component';
@@ -48,7 +49,7 @@ function UserProfileComponent() {
         <h2>Seccion 3: Donaciones</h2>
       </div>
       <div className='user-profile-section-4' ref={userProfileSection4Ref}>
-        <h2>Seccion 4: Metodo de Pago</h2>
+        <CreditCardForm/>
       </div>
       <div className='user-profile-section-5' ref={userProfileSection5Ref}>
         <UserProfileEdit
