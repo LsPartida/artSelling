@@ -25,7 +25,11 @@ const ArtGalleryCardContainer = ({
   }, []);
 
   if (loading) {
-    return <h4>Cargando...</h4>;
+    return location.pathname !== '/galeria' ? (
+      <h4>No has publicado ni un producto...</h4>
+    ) : (
+      <h4>Cargando...</h4>
+    );
   }
 
   return (
@@ -39,6 +43,7 @@ const ArtGalleryCardContainer = ({
             return (
               <Card
                 key={card._id}
+                id={card._id}
                 images={card.galeryImgUrls.length !== 0 && card.galeryImgUrls}
                 title={card.productName}
                 description={card.productDescripcion}
@@ -55,6 +60,7 @@ const ArtGalleryCardContainer = ({
             return card.galeryImgUrls.length !== 0 ? (
               <Card
                 key={card._id}
+                id={card._id}
                 images={card.galeryImgUrls}
                 title={card.productName}
                 description={card.productDescripcion}
@@ -67,6 +73,7 @@ const ArtGalleryCardContainer = ({
             ) : (
               <Card
                 key={card._id}
+                id={card._id}
                 title={card.productName}
                 price={card.productPrice}
                 ubication={card.productUbication}

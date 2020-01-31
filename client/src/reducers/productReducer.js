@@ -31,6 +31,14 @@ export default (state = initialState, action) => {
         ...state,
         products: [...state.products, action.payload]
       };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(
+          contact => contact._id !== action.payload
+        ),
+        loading: false
+      };
     case GET_ALL_PRODUCTS:
     case GET_USER_PRODUCTS:
       return {
