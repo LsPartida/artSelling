@@ -22,7 +22,8 @@
 }
 
 .form-antd-item input,
-.form-antd-item textarea {
+.form-antd-item textarea,
+.form-antd-item select {
   background-color: #393e46;
   color: white;
   border: none;

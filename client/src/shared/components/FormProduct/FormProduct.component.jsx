@@ -30,7 +30,7 @@ function FormProduct({ form, addProduct }) {
   }, []);
 
   const success = () => {
-    message.success('La informacion a sido enviada <3');
+    message.success('La informacion ha sido enviada <3');
   };
 
   const handleSubmit = e => {
