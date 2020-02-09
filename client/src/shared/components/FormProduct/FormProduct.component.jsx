@@ -29,6 +29,25 @@ function FormProduct({ form, addProduct }) {
     form.validateFields();
   }, []);
 
+  const [filesUpload, setFilesUpload] = useState();
+
+  const onFileChange = e => {
+    e.preventDefault();
+    setFilesUpload(e.target.files[0]);
+  };
+
+  // const uploadFiles = () => {
+  //   const formData = new formData();
+  //   for (const name in files) {
+  //     if (name === 'files') {
+  //       for (let i = 0; i < files.length; i++) {
+  //         formData.append(name, files[i]);
+  //       }
+  //     }
+  //   }
+  //   return formData;
+  // };
+
   const success = () => {
     message.success('La informacion a sido enviada <3');
   };
@@ -46,37 +65,47 @@ function FormProduct({ form, addProduct }) {
       } = values;
       if (!err) {
         console.log('TCL: FormProduct -> values', values);
+        const formData = new FormData();
+        formData.append('galeryImgUrls', filesUpload);
         success();
-        addProduct({
-          productName,
-          productDescripcion,
-          // galeryImgUrls, no se pudo manjear imagenes :c
-          productUbication,
-          productPrice,
-          category,
-          productLikes: '0'
-        });
+        // for (const name in filesUpload) {
+        //   if (name === 'files') {
+        //     for (let i = 0; i < filesUpload.length; i++) {
+        //       formData.append(name, filesUpload[i]);
+        //     }
+        //   }
+        // }
+        addProduct(
+          // productName,
+          // productDescripcion,
+          // // galeryImgUrls, no se pudo manjear imagenes :c
+          // productUbication,
+          // productPrice,
+          // category,
+          // productLikes: '0'
+          formData
+        );
         form.resetFields();
       }
     });
   };
 
-  const props = {
-    name: 'file',
-    multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    }
-  };
+  // const props = {
+  //   name: 'galeryImgUrls',
+  //   multiple: true,
+  //   action: '/api/products',
+  //   onSubmit(info) {
+  //     const { status } = info.file;
+  //     if (status !== 'uploading') {
+  //       // console.log(info.file, info.fileList);
+  //     }
+  //     if (status === 'done') {
+  //       message.success(`${info.file.name} file uploaded successfully.`);
+  //     } else if (status === 'error') {
+  //       message.error(`${info.file.name} file upload failed.`);
+  //     }
+  //   }
+  // };
 
   const {
     getFieldDecorator,
@@ -107,7 +136,11 @@ function FormProduct({ form, addProduct }) {
             🌮
           </span>
         </h2>
-        <Form className='form-antd-container' onSubmit={handleSubmit}>
+        <Form
+          className='form-antd-container'
+          onSubmit={handleSubmit}
+          enctype='multipart/form-data'
+        >
           <Form.Item
             className='form-antd-item'
             validateStatus={titleError ? 'error' : ''}
@@ -146,12 +179,9 @@ function FormProduct({ form, addProduct }) {
             )}
           </Form.Item>
 
-          <Form.Item
-            className='form-antd-item'
-            validateStatus={uploadError ? 'error' : ''}
-            help={uploadError || ''}
-          >
-            {getFieldDecorator('galeryImgUrls', {
+          <Form.Item>
+            <input type='file' multiple onChange={onFileChange} />
+            {/* {getFieldDecorator('galeryImgUrls', {
               rules: [
                 {
                   required: true,
@@ -171,7 +201,7 @@ function FormProduct({ form, addProduct }) {
                   favor.
                 </p>
               </Dragger>
-            )}
+            )} */}
           </Form.Item>
 
           <Form.Item

@@ -24,7 +24,6 @@ export const addProduct = product => async dispatch => {
   };
 
   try {
-    console.log(product);
     const res = await axios.post('/api/products', product, config);
 
     dispatch({
