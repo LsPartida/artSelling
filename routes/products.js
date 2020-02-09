@@ -33,6 +33,18 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+//@route    POST api/products/images
+//@desx     Add photos to new products
+//@Access   Private
+router.post(
+  '/images',
+  [auth, upload.array('galeryImgUrls', 5)],
+  async (req, res) => {
+    console.log(req.files);
+    console.log('subido xd');
+  }
+);
+
 //@route    POST api/products
 //@desc     Add new product
 //@acces    Private
@@ -44,51 +56,51 @@ router.post(
       check('productName', 'Product name is required')
         .not()
         .isEmpty()
-    ],
-    upload.single('galeryImgUrls')
+    ]
   ],
   async (req, res) => {
-    console.log(req.file);
-    console.log('subido xd');
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   return res.status(400).json({ msg: errors.array() });
-    // }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ msg: errors.array() });
+    }
 
-    // const {
-    //   productName,
-    //   productDescripcion,
-    //   galeryImgUrls,
-    //   productUbication,
-    //   productPrice,
-    //   productLikes,
-    //   urlDetails,
-    //   category
-    // } = req.body;
+    const {
+      productName,
+      productDescripcion,
+      galeryImgUrls,
+      productUbication,
+      productPrice,
+      productLikes,
+      urlDetails,
+      category
+    } = req.body;
 
-    // try {
-    //   const newProduct = new Product({
-    //     productName,
-    //     productDescripcion,
-    //     galeryImgUrls,
-    //     productUbication,
-    //     productPrice,
-    //     productLikes,
-    //     urlDetails,
-    //     category,
-    //     user: req.user.id
-    //   });
+    console.log(productName);
 
-    //   const product = await newProduct.save();
+    try {
+      const newProduct = new Product({
+        productName,
+        productDescripcion,
+        galeryImgUrls,
+        productUbication,
+        productPrice,
+        productLikes,
+        urlDetails,
+        category,
+        user: req.user.id
+      });
 
-    //   res.json(product);
-    // } catch (error) {
-    //   console.error(error.message);
-    //   res
-    //     .status(500)
-    //     .send('Server Error')
-    //     .json({ msg: 'Algo Salio mal, Intente de nuevo mas tarde u.u' });
-    // }
+      const product = await newProduct.save();
+
+      res.json(product);
+    } catch (error) {
+      console.error(error.message);
+      res
+        .status(500)
+        .send('Server Error')
+        .json({ msg: 'Algo Salio mal, Intente de nuevo mas tarde u.u' });
+    }
+    console.log('terminado n.n');
   }
 );
 

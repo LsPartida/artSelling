@@ -2,19 +2,11 @@ import React, { useEffect, useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 // * Styles and Ant-Design
 import './formProduct.component.css';
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  message,
-  Upload,
-  Modal,
-  Select
-} from 'antd';
+import { Form, Icon, Input, Button, message, Upload, Select } from 'antd';
 // * Actions
 import {
   addProduct,
+  addProductImages,
   clearCurrentProduct
 } from '../../../actions/productActions';
 const { TextArea } = Input;
@@ -24,29 +16,18 @@ function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
-function FormProduct({ form, addProduct }) {
+function FormProduct({ form, addProduct, addProductImages }) {
   useEffect(() => {
     form.validateFields();
+    // eslint-disable-next-line
   }, []);
 
   const [filesUpload, setFilesUpload] = useState();
 
   const onFileChange = e => {
     e.preventDefault();
-    setFilesUpload(e.target.files[0]);
+    setFilesUpload(e.target.files);
   };
-
-  // const uploadFiles = () => {
-  //   const formData = new formData();
-  //   for (const name in files) {
-  //     if (name === 'files') {
-  //       for (let i = 0; i < files.length; i++) {
-  //         formData.append(name, files[i]);
-  //       }
-  //     }
-  //   }
-  //   return formData;
-  // };
 
   const success = () => {
     message.success('La informacion a sido enviada <3');
@@ -66,23 +47,20 @@ function FormProduct({ form, addProduct }) {
       if (!err) {
         console.log('TCL: FormProduct -> values', values);
         const formData = new FormData();
-        formData.append('galeryImgUrls', filesUpload);
+        for (let i = 0; i < filesUpload.length; i++) {
+          formData.append('galeryImgUrls', filesUpload[i]);
+        }
         success();
-        // for (const name in filesUpload) {
-        //   if (name === 'files') {
-        //     for (let i = 0; i < filesUpload.length; i++) {
-        //       formData.append(name, filesUpload[i]);
-        //     }
-        //   }
-        // }
         addProduct(
-          // productName,
-          // productDescripcion,
-          // // galeryImgUrls, no se pudo manjear imagenes :c
-          // productUbication,
-          // productPrice,
-          // category,
-          // productLikes: '0'
+          {
+            productName,
+            productDescripcion,
+            productUbication,
+            productPrice,
+            galeryImgUrls,
+            category,
+            productLikes: '0'
+          },
           formData
         );
         form.resetFields();
@@ -284,5 +262,6 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
   addProduct,
+  addProductImages,
   clearCurrentProduct
 })(Form.create({ name: 'normal_form' })(FormProduct));
