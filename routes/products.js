@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
+const upload = require('../middleware/multer');
 
 const User = require('../models/User');
 const Product = require('../models/Product');
@@ -43,48 +44,51 @@ router.post(
       check('productName', 'Product name is required')
         .not()
         .isEmpty()
-    ]
+    ],
+    upload.single('galeryImgUrls')
   ],
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ msg: errors.array() });
-    }
+    console.log(req.file);
+    console.log('subido xd');
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({ msg: errors.array() });
+    // }
 
-    const {
-      productName,
-      productDescripcion,
-      galeryImgUrls,
-      productUbication,
-      productPrice,
-      productLikes,
-      urlDetails,
-      category
-    } = req.body;
+    // const {
+    //   productName,
+    //   productDescripcion,
+    //   galeryImgUrls,
+    //   productUbication,
+    //   productPrice,
+    //   productLikes,
+    //   urlDetails,
+    //   category
+    // } = req.body;
 
-    try {
-      const newProduct = new Product({
-        productName,
-        productDescripcion,
-        galeryImgUrls,
-        productUbication,
-        productPrice,
-        productLikes,
-        urlDetails,
-        category,
-        user: req.user.id
-      });
+    // try {
+    //   const newProduct = new Product({
+    //     productName,
+    //     productDescripcion,
+    //     galeryImgUrls,
+    //     productUbication,
+    //     productPrice,
+    //     productLikes,
+    //     urlDetails,
+    //     category,
+    //     user: req.user.id
+    //   });
 
-      const product = await newProduct.save();
+    //   const product = await newProduct.save();
 
-      res.json(product);
-    } catch (error) {
-      console.error(error.message);
-      res
-        .status(500)
-        .send('Server Error')
-        .json({ msg: 'Algo Salio mal, Intente de nuevo mas tarde u.u' });
-    }
+    //   res.json(product);
+    // } catch (error) {
+    //   console.error(error.message);
+    //   res
+    //     .status(500)
+    //     .send('Server Error')
+    //     .json({ msg: 'Algo Salio mal, Intente de nuevo mas tarde u.u' });
+    // }
   }
 );
 
