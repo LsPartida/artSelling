@@ -40,8 +40,9 @@ router.post(
   '/images',
   [auth, upload.array('galeryImgUrls', 5)],
   async (req, res) => {
-    console.log(req.files);
-    console.log('subido xd');
+    const galeryImgUrls = [];
+    console.log(req.files[0].path);
+    res.json(req.files);
   }
 );
 
