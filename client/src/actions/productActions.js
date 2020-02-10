@@ -26,6 +26,7 @@ export const addProduct = (product, formData) => async dispatch => {
 
   try {
     const resImage = await axios.post('/api/products/images', formData);
+    console.log(resImage);
     const res = await axios.post('/api/products', product, config);
     dispatch({
       type: ADD_PRODUCT,
