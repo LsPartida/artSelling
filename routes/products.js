@@ -41,8 +41,10 @@ router.post(
   [auth, upload.array('galeryImgUrls', 5)],
   async (req, res) => {
     const galeryImgUrls = [];
-    console.log(req.files[0].path);
-    res.json(req.files);
+    for (let i = 0; i < req.files.length; i++) {
+      galeryImgUrls.push(`products/${req.files[i].filename}`);
+    }
+    res.json(galeryImgUrls);
   }
 );
 
