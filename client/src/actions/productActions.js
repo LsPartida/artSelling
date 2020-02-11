@@ -36,10 +36,10 @@ export const addProduct = (product, formData) => async dispatch => {
       payload: res.data
     });
   } catch (error) {
-    // dispatch({
-    //   type: PRODUCT_ERROR,
-    //   payload: error
-    // });
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: error
+    });
   }
 };
 // Delete product
