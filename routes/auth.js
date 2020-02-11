@@ -74,4 +74,18 @@ router.post(
   }
 );
 
+// @route   PUT api/auth
+// @desc    Edit user Profile
+//@acces    Private
+router.put('/:id', auth, async (req, ser) => {
+  const { _id, name, email, phone, image, description } = req.body;
+  const productFields = {};
+  if (_id) productFields._id = _id;
+  if (name) productFields.name = name;
+  if (email) productFields.email = email;
+  if (phone) productFields.phone = phone;
+  if (image) productFields.image = urlImage;
+  if (description) productFields.description = description;
+});
+
 module.exports = router;

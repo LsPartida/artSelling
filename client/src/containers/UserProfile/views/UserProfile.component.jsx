@@ -49,20 +49,10 @@ function UserProfileComponent() {
         <h2>Seccion 3: Donaciones</h2>
       </div>
       <div className='user-profile-section-4' ref={userProfileSection4Ref}>
-        <CreditCardForm/>
+        <CreditCardForm />
       </div>
       <div className='user-profile-section-5' ref={userProfileSection5Ref}>
-        <UserProfileEdit
-          userImage={'https://bit.ly/2prUcWu'}
-          userName={'Albert Einstein'}
-          userPhone={'3126660202'}
-          userDescription={
-            'Albert Einstein fue un físico alemán de origen judío, nacionalizado después suizo, austriaco y estadounidense. Se lo considera el científico más importante, conocido y popular del siglo XX.​​'
-          }
-          userFb={'https://www.facebook.com/NASA/'}
-          userTw={'https://twitter.com/NASA'}
-          userIg={'https://www.instagram.com/nasa/'}
-        />
+        <UserProfileEdit />
       </div>
     </div>
   );

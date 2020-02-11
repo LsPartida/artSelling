@@ -8,7 +8,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  EDIT_USER_PERFIL
 } from './types';
 
 // Load User / to get the logged in user
@@ -68,6 +69,7 @@ export const register = formData => async dispatch => {
     });
   }
 };
+
 // Login User
 export const login = formData => async dispatch => {
   const config = {
@@ -120,3 +122,6 @@ export const clearErrors = () => dispatch => {
     type: CLEAR_ERRORS
   });
 };
+
+// Edit user perfil
+export const editUserPerfil = () => {};

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // * Styles
 import './userProfileEdit.component.css';
@@ -43,4 +44,20 @@ const UserProfileEditComponent = ({
   );
 };
 
-export default UserProfileEditComponent;
+UserProfileEditComponent.defaultProps = {
+  userPhone: '3126660202',
+  userDescription:
+    'AL NO AGREGAR DESCRIPCION ERES Albert Einstein que fue un físico alemán de origen judío, nacionalizado después suizo, austriaco y estadounidense. Se lo considera el científico más importante, conocido y popular del siglo XX.​​',
+  userFb: 'https://www.facebook.com/NASA/',
+  userTw: 'https://twitter.com/NASA',
+  userIg: 'https://www.instagram.com/nasa/'
+};
+
+const mapStateToProps = state => ({
+  userName: state.auth.user.name,
+  userDescription: state.auth.user.description,
+  userPhone: state.auth.user.phone,
+  userImage: state.auth.user.image
+});
+
+export default connect(mapStateToProps, {})(UserProfileEditComponent);
