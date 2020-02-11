@@ -36,17 +36,15 @@ router.get('/', auth, async (req, res) => {
 //@route    POST api/products/images
 //@desx     Add photos to new products
 //@Access   Private
-router.post(
-  '/images',
-  [auth, upload.array('galeryImgUrls', 5)],
-  async (req, res) => {
-    const galeryImgUrls = [];
-    for (let i = 0; i < req.files.length; i++) {
-      galeryImgUrls.push(`products/${req.files[i].filename}`);
-    }
-    res.json(galeryImgUrls);
+router.post('/images', upload.array('galeryImgUrls', 5), async (req, res) => {
+  const galeryImgUrls = [];
+  for (let i = 0; i < req.files.length; i++) {
+    galeryImgUrls.push(
+      `http://localhost:5000/products/${req.files[i].filename}`
+    );
   }
-);
+  res.json(galeryImgUrls);
+});
 
 //@route    POST api/products
 //@desc     Add new product

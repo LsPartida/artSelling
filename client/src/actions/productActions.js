@@ -25,10 +25,7 @@ export const addProduct = (product, formData) => async dispatch => {
   };
 
   try {
-    const resImage = await axios.post(
-      'https://localbri.herokuapp.com/api/products/images',
-      formData
-    );
+    const resImage = await axios.post('/api/products/images', formData);
 
     product.galeryImgUrls = resImage.data;
 
