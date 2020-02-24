@@ -22,7 +22,7 @@ const UserSchema = mongoose.Schema({
   },
   image: {
     type: String,
-    value: 'https://bit.ly/2prUcWu'
+    default: 'https://bit.ly/2prUcWu'
   },
   date: {
     type: Date,
