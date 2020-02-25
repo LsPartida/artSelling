@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
+const upload = require('../middleware/multer');
 
 const User = require('../models/User');
 const Product = require('../models/Product');
@@ -30,6 +31,19 @@ router.get('/', auth, async (req, res) => {
   } catch (error) {
     res.status(500).send('Server Error');
   }
+});
+
+//@route    POST api/products/images
+//@desx     Add photos to new products
+//@Access   Private
+router.post('/images', upload.array('galeryImgUrls', 5), async (req, res) => {
+  const galeryImgUrls = [];
+  for (let i = 0; i < req.files.length; i++) {
+    galeryImgUrls.push(
+      `http://localhost:5000/products/${req.files[i].filename}`
+    );
+  }
+  res.json(galeryImgUrls);
 });
 
 //@route    POST api/products
@@ -62,6 +76,8 @@ router.post(
       category
     } = req.body;
 
+    console.log(productName);
+
     try {
       const newProduct = new Product({
         productName,
@@ -85,6 +101,7 @@ router.post(
         .send('Server Error')
         .json({ msg: 'Algo Salio mal, Intente de nuevo mas tarde u.u' });
     }
+    console.log('terminado n.n');
   }
 );
 

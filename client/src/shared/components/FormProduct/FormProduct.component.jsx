@@ -2,19 +2,11 @@ import React, { useEffect, useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 // * Styles and Ant-Design
 import './formProduct.component.css';
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  message,
-  Upload,
-  Modal,
-  Select
-} from 'antd';
+import { Form, Icon, Input, Button, message, Upload, Select } from 'antd';
 // * Actions
 import {
   addProduct,
+  addProductImages,
   clearCurrentProduct
 } from '../../../actions/productActions';
 const { TextArea } = Input;
@@ -24,10 +16,18 @@ function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
-function FormProduct({ form, addProduct }) {
+function FormProduct({ form, addProduct, addProductImages }) {
   useEffect(() => {
     form.validateFields();
+    // eslint-disable-next-line
   }, []);
+
+  const [filesUpload, setFilesUpload] = useState();
+
+  const onFileChange = e => {
+    e.preventDefault();
+    setFilesUpload(e.target.files);
+  };
 
   const success = () => {
     message.success('La informacion ha sido enviada <3');
@@ -46,37 +46,44 @@ function FormProduct({ form, addProduct }) {
       } = values;
       if (!err) {
         console.log('TCL: FormProduct -> values', values);
+        const formData = new FormData();
+        for (let i = 0; i < filesUpload.length; i++) {
+          formData.append('galeryImgUrls', filesUpload[i]);
+        }
         success();
-        addProduct({
-          productName,
-          productDescripcion,
-          // galeryImgUrls, no se pudo manjear imagenes :c
-          productUbication,
-          productPrice,
-          category,
-          productLikes: '0'
-        });
+        addProduct(
+          {
+            productName,
+            productDescripcion,
+            productUbication,
+            productPrice,
+            galeryImgUrls,
+            category,
+            productLikes: '0'
+          },
+          formData
+        );
         form.resetFields();
       }
     });
   };
 
-  const props = {
-    name: 'file',
-    multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    }
-  };
+  // const props = {
+  //   name: 'galeryImgUrls',
+  //   multiple: true,
+  //   action: '/api/products',
+  //   onSubmit(info) {
+  //     const { status } = info.file;
+  //     if (status !== 'uploading') {
+  //       // console.log(info.file, info.fileList);
+  //     }
+  //     if (status === 'done') {
+  //       message.success(`${info.file.name} file uploaded successfully.`);
+  //     } else if (status === 'error') {
+  //       message.error(`${info.file.name} file upload failed.`);
+  //     }
+  //   }
+  // };
 
   const {
     getFieldDecorator,
@@ -107,7 +114,11 @@ function FormProduct({ form, addProduct }) {
             🌮
           </span>
         </h2>
-        <Form className='form-antd-container' onSubmit={handleSubmit}>
+        <Form
+          className='form-antd-container'
+          onSubmit={handleSubmit}
+          enctype='multipart/form-data'
+        >
           <Form.Item
             className='form-antd-item'
             validateStatus={titleError ? 'error' : ''}
@@ -146,12 +157,9 @@ function FormProduct({ form, addProduct }) {
             )}
           </Form.Item>
 
-          <Form.Item
-            className='form-antd-item'
-            validateStatus={uploadError ? 'error' : ''}
-            help={uploadError || ''}
-          >
-            {getFieldDecorator('galeryImgUrls', {
+          <Form.Item>
+            <input type='file' multiple onChange={onFileChange} />
+            {/* {getFieldDecorator('galeryImgUrls', {
               rules: [
                 {
                   required: true,
@@ -171,7 +179,7 @@ function FormProduct({ form, addProduct }) {
                   favor.
                 </p>
               </Dragger>
-            )}
+            )} */}
           </Form.Item>
 
           <Form.Item
@@ -254,5 +262,6 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
   addProduct,
+  addProductImages,
   clearCurrentProduct
 })(Form.create({ name: 'normal_form' })(FormProduct));

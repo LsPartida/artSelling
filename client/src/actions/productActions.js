@@ -12,11 +12,12 @@ import {
   GET_USER_PRODUCTS,
   CLEAR_ALL_PRODUCTS,
   CLEAR_USER_PRODUCTS,
-  PRODUCT_ERROR
+  PRODUCT_ERROR,
+  ADD_PRODUCT_IMAGE
 } from './types';
 
 // Add product
-export const addProduct = product => async dispatch => {
+export const addProduct = (product, formData) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +25,10 @@ export const addProduct = product => async dispatch => {
   };
 
   try {
-    console.log(product);
+    const resImage = await axios.post('/api/products/images', formData);
+
+    product.galeryImgUrls = resImage.data;
+
     const res = await axios.post('/api/products', product, config);
 
     dispatch({
@@ -115,3 +119,10 @@ export const getUserProducts = () => async dispatch => {
 // Clear all products
 
 // Clear user products
+
+// Add product images
+export const addProductImages = formData => async dispatch => {
+  try {
+    const res = await axios.post('/api/products/images', formData);
+  } catch (error) {}
+};

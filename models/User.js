@@ -14,6 +14,16 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  phone: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  image: {
+    type: String,
+    default: 'https://bit.ly/2prUcWu'
+  },
   date: {
     type: Date,
     default: Date.now
