@@ -13,6 +13,8 @@ import 'antd/dist/antd.min.js';
 import { Provider } from 'react-redux';
 import store from './store';
 
+import Footer from './shared/components/Footer/Footer.component'
+
 const root = document.getElementById('root');
 // * Set the Auth Token if an user is logged in
 if (localStorage.token) {
@@ -23,6 +25,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <AppRouter />
+      <Footer/>
     </Router>
   </Provider>,
   root
