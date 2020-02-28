@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import NavbarHome from '../../../shared/components/NavbarHome/NavbarHome.component';
 
 import './about.component.css'
 
 const AboutComponent = () => {
   return (
-    <div className='about-container'>
+    <Fragment>
+      <NavbarHome/>
+
+      <div className='about-container'>
       <div className='about-content-container'>
         <p className='about-title'>Sobre Nosotros</p>
         <div className='about-content'>
@@ -34,6 +37,8 @@ const AboutComponent = () => {
         
       </div>
     </div>
+    </Fragment>
+    
   )
 }
 

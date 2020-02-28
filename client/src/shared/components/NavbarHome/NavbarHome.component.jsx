@@ -47,10 +47,6 @@ const NavbarHomeComponent = ({ user: { name }, logout, _userId }) => {
   // * CONTENT WITH SESSION
   const contentWithSession = (
     <div className='navbarHome-sub2'>
-      <Link to='/about'>
-        <label className='navbarHome-sub2-btn-login'>Nosotros</label>
-      </Link>
-
       <Link to='/galeria'>
         <label className='navbarHome-sub2-btn-login'>Tienda</label>
       </Link>
