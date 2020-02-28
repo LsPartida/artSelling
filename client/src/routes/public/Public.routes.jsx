@@ -33,7 +33,7 @@ function PublicRoutes() {
       '../../containers/ArtGallery/views/components/ArtGalleryDetails.component'
     )
   );
-
+  
   const About = lazy(() =>
     import(
       '../../shared/components/About/About.component'
