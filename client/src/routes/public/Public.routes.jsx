@@ -34,8 +34,14 @@ function PublicRoutes() {
     )
   );
 
+    const About = lazy(() =>
+    import(
+      '../../shared/components/About/About.component'
+    )
+  );
+
   // * Loading Element
-  const Loading = (
+  const Loading = ( 
     <div
       style={{
         height: '100vh',
@@ -59,6 +65,7 @@ function PublicRoutes() {
         <Route exact path='/details' component={ArtGalleryDetails} />
         <Route exact path='/login' component={LoginContainer} />
         <Route exact path='/registro' component={RegisterContainer} />
+        <Route exact path='/about' component={About} />
         <Route component={Error404} />
       </Switch>
     </Suspense>
