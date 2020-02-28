@@ -34,7 +34,7 @@ function PublicRoutes() {
     )
   );
 
-    const About = lazy(() =>
+  const About = lazy(() =>
     import(
       '../../shared/components/About/About.component'
     )
